@@ -1,0 +1,10 @@
+{
+  "mfa_enabled": false,
+  "tls_enabled": true,
+  "logging_enabled": true,
+  "backup_encrypted": false,
+  "password_length": 6,
+
+  "login_attempts": ["failed", "failed", "failed", "success"],
+  "suspicious_ip_detected": true
+}

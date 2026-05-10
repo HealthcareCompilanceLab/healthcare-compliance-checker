@@ -1,0 +1,125 @@
+
+<html>
+<head>
+<title>Security Compliance Report</title>
+<style>
+body {
+    font-family: Arial;
+    background-color: #0f172a;
+    color: white;
+    padding: 20px;
+}
+h1 { color: #38bdf8; }
+.card {
+    background: #1e293b;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+.compliant { color: #22c55e; }
+.noncompliant { color: #ef4444; }
+.insufficient { color: #facc15; }
+.alert { color: #f87171; font-weight: bold; }
+button {
+    padding: 10px;
+    background: #38bdf8;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Healthcare Security Dashboard</h1>
+
+<div class="card">
+<h2>Compliance Score: 38.46%</h2>
+<h3>Status: HIGH RISK</h3>
+<p>Generated: 2026-04-02 15:31:40.118598</p>
+</div>
+
+<div class="card">
+<h3>Summary</h3>
+<p>Total Checks: 5</p>
+<p>Passed: 2</p>
+<p>Failed: 3</p>
+<p>Insufficient: 0</p>
+</div>
+
+<div class="card">
+<h3>Security Alerts</h3>
+<p class='alert'>⚠ Multiple failed login attempts detected (possible brute-force attack)</p><br><p class='alert'>🚨 Suspicious IP detected accessing system</p>
+</div>
+
+<div class="card">
+<h3>Compliance Results</h3>
+<table>
+<tr>
+<th>Control</th>
+<th>Status</th>
+<th>Risk</th>
+<th>Evidence</th>
+<th>Remediation</th>
+</tr>
+
+    <tr>
+    <td>MFA must be enabled for admin access</td>
+    <td class="noncompliant">NON-COMPLIANT</td>
+    <td>High</td>
+    <td>mfa_enabled = False</td>
+    <td>Enable multi-factor authentication for all privileged accounts.</td>
+    </tr>
+    
+    <tr>
+    <td>TLS must be enabled</td>
+    <td class="compliant">COMPLIANT</td>
+    <td>High</td>
+    <td>tls_enabled = True</td>
+    <td>Enable TLS/HTTPS for all communications.</td>
+    </tr>
+    
+    <tr>
+    <td>Audit logging must be enabled</td>
+    <td class="compliant">COMPLIANT</td>
+    <td>Medium</td>
+    <td>logging_enabled = True</td>
+    <td>Enable logging for system activities.</td>
+    </tr>
+    
+    <tr>
+    <td>Backups must be encrypted</td>
+    <td class="noncompliant">NON-COMPLIANT</td>
+    <td>High</td>
+    <td>backup_encrypted = False</td>
+    <td>Encrypt all backup data.</td>
+    </tr>
+    
+    <tr>
+    <td>Password length must be >= 8</td>
+    <td class="noncompliant">NON-COMPLIANT</td>
+    <td>Medium</td>
+    <td>password_length = 6</td>
+    <td>Enforce strong password policies.</td>
+    </tr>
+    
+</table>
+</div>
+
+<div class="card">
+<h3>Actions</h3>
+<button onclick="location.reload()">Run Scan Again</button>
+</div>
+
+</body>
+</html>
