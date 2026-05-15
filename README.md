@@ -91,19 +91,19 @@ Results are displayed through a professional HTML dashboard containing:
 
 ---
 ## Group Roles & Responsibilities
-
-| Member| Role                           | Responsibilities|
-|_______|________________________________|_____________________________________________________|
-|Carleen|Research & Compliance Lead      |HIPAA/PHIPA/NIST mapping, documentation,
-|       |                                |testing scenarios, report writing, report writing,
-|       |                                |privacy/usability review
-|_______|________________________________|_____________________________________________________|
-|Kasi   |Technical & Prototype Lead      |Code implementation, Streamlit interface,
-|       |                                |monitoring logic, risk scoring
-|_______|________________________________|______________________________________________________|
-|Hartej |Project Mgt.& Presentation Lead |Weekly coordination, GitHub evidence diagrams,        |
-|       |                                |integration support                                   |
-|_______|________________________________|______________________________________________________|
+|_____________________________________________________________________________________________|
+| Member| Role                           | Responsibilities                                   |
+|_______|________________________________|____________________________________________________|
+|Carleen|Research & Compliance Lead      |HIPAA/PHIPA/NIST mapping, documentation,            |
+|       |                                |testing scenarios, report writing, report writing,  |
+|       |                                |privacy/usability review                            |
+|_______|________________________________|____________________________________________________|
+|Kasi   |Technical & Prototype Lead      |Code implementation, Streamlit interface,           |
+|       |                                |monitoring logic, risk scoring                      |
+|_______|_______________________________|_____________________________________________________|
+|Hartej |Project Mgt.& Presentation Lead |Weekly coordination, GitHub evidence diagrams,      |
+|       |                                |integration support                                 |
+|_______|________________________________|____________________________________________________|
 
 
 # Project Structure
