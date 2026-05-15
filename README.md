@@ -2,45 +2,66 @@
 
 ## Overview
 
-The Healthcare Data Security Compliance Checker is a cybersecurity and compliance support
-tool designed to help healthcare organizations evaluate whether important safeguards are properly
-implemented to protect electronic health records (EHRs), protected health information (PHI), and
-related healthcare systems.The tool focuses on healthcare data security requirements and does not
-process, collect, or store live patient health information. Instead, it evaluates selected system
-configurations, security practices, access-related metadata, and simulated evidence to determine
-whether safeguards align with healthcare security expectations.
-The tool is intended to operate as a lightweight background monitoring and compliance
-support system while healthcare professionals access PHI systems. It collects security-related
-metadata such as login attempts, MFA status, role-based access status, audit log availability,
-encryption status, backup protection, cybersecurity training readiness, and suspicious access
-indicators. It then evaluates these signals against healthcare security control requirements and
-generates plain-language and technical reports showing risk level, compliance gaps, supporting
-evidence, and remediation recommendations.
-The revised Phase 2 version will move the project from a basic compliance questionnaire
-toward a more evidence-based, context-aware, and privacy-preserving compliance checker. Each
-finding will be connected to the user’s role, access behaviour, system configuration evidence,
-safeguard type, CIA triad impact, and related compliance control area.
-The project is focused on eight main safeguards:
-1. Access control
-2. Encryption and transmission security
-3. Logging and audit controls
-4. Backup, recovery and contingency planning
-5. PHI access behaviour monitoring
-6. EHR security safeguards
-7. Cybersecurity awareness and training readiness
-8. Useability, privacy, data integrity, and continuous improvement
-Our goal throughout phase 2 is to improve the existing prototype into a more complete and
-realistic compliance checker for smaller or privately funded healthcare organizations that may not
-have access to expensive enterprise compliance platforms. The prototype will be expanded into a
-more complete system with a stronger control bank, improved UI, better reporting, training readiness
-checks, data integrity checks, and healthcare related risk scenarios.
+The **Healthcare Data Security Compliance Checker** is a cybersecurity and compliance support tool designed to help healthcare organizations evaluate whether important safeguards are properly implemented to protect:
 
+- Electronic Health Records (EHRs)
+- Protected Health Information (PHI)
+- Related healthcare systems
+
+The tool **does not process, collect, or store live patient health information**. Instead, it evaluates selected system configurations, security practices, access-related metadata, and simulated evidence to determine whether safeguards align with healthcare security expectations.
+
+The system is intended to operate as a **lightweight background monitoring and compliance support tool** while healthcare professionals access PHI systems. It evaluates:
+
+- Login attempts
+- MFA status
+- Role-based access controls
+- Audit log availability
+- Encryption status
+- Backup protection
+- Cybersecurity training readiness
+- Suspicious access indicators
+
+The tool compares these indicators against healthcare security control requirements and generates:
+
+- Plain-language reports
+- Technical reports
+- Risk levels
+- Compliance gaps
+- Supporting evidence
+- Remediation recommendations
+
+Phase 2 expands the project from a **basic compliance questionnaire** toward a more **evidence-based, context-aware, and privacy-preserving compliance checker**.
+
+Each finding is connected to:
+
+- User role
+- Access behaviour
+- System configuration evidence
+- Safeguard category
+- CIA triad impact
+- Related compliance control areas
+
+---
+
+# Core Safeguards Evaluated
+
+The project focuses on eight major safeguard categories:
+
+1. Access control  
+2. Encryption & transmission security  
+3. Logging & audit controls  
+4. Backup, recovery & contingency planning  
+5. PHI access behaviour monitoring  
+6. EHR security safeguards  
+7. Cybersecurity awareness & training readiness  
+8. Usability, privacy, data integrity & continuous improvement  
 
 ---
 
 # Features
 
 ## Compliance Validation
+
 The system evaluates security controls related to:
 
 - Access Control
@@ -52,6 +73,7 @@ The system evaluates security controls related to:
 ---
 
 ## Evidence-Based Assessment
+
 The tool analyzes simulated system evidence including:
 
 - Configuration settings
@@ -62,9 +84,11 @@ The tool analyzes simulated system evidence including:
 ---
 
 ## Risk Scoring
-The checker calculates a weighted compliance score based on the severity of failed controls.
 
-Risk Levels:
+Weighted compliance scoring based on severity of failed controls.
+
+### Risk Levels:
+
 - Low Risk
 - Medium Risk
 - High Risk
@@ -72,7 +96,8 @@ Risk Levels:
 ---
 
 ## Security Monitoring
-The system includes basic attack detection capabilities such as:
+
+Includes basic attack detection such as:
 
 - Multiple failed login detection
 - Suspicious access alerts
@@ -80,18 +105,23 @@ The system includes basic attack detection capabilities such as:
 
 ---
 
-## Dashboard Report
-Results are displayed through a professional HTML dashboard containing:
+## Dashboard Reporting
+
+Results displayed through a dashboard containing:
 
 - Compliance score
 - Security alerts
 - Evidence tracking
+- Risk summaries
 - Remediation recommendations
-- Risk assessment summary
 
 ---
-## Group Roles & Responsibilities
+
+# Group Roles & Responsibilities
+
+```text
 Project Team
+│
 ├── Carleen — Research & Compliance Lead
 │   ├── HIPAA / PHIPA / NIST mapping
 │   ├── Documentation
@@ -109,35 +139,123 @@ Project Team
     ├── Weekly coordination
     ├── GitHub evidence diagrams
     └── Integration support
-# Risks & Challenges:
+```
+
+---
+
+# Updated Scope & Limitations
+
+## In Scope
+
+The Phase 2 implementation includes:
+
+- Streamlit or Python-based user interface
+- Expanded control bank
+- HIPAA / PHIPA / NIST mapping
+- Administrative, physical & technical safeguards
+- CIA triad mapping
+- PHI access behaviour monitoring using simulated logs
+- Training readiness checks
+- Data integrity checks
+- Incident response readiness checks
+- Business continuity & backup checks
+- Risk scoring
+- Plain-language and technical reporting
+- GitHub documentation & weekly updates
+- Testing using multiple healthcare scenarios
+
+---
+
+## Out of Scope (Phase 2)
+
+The following are intentionally excluded:
+
+- Live EHR integration
+- Real patient data collection
+- Real-time production monitoring
+- Full machine learning anomaly detection
+- Full SIEM integration
+- Full firewall / antivirus API integration
+- Real PHI storage
+- Full blockchain implementation
+
+---
+
+## Implementation Constraints
+
+Because the project has approximately **4 months for implementation** and **no access to real PHI**, the system will use:
+
+- Simulated healthcare access logs
+- Generated testing scenarios
+- Sample configuration values
+- Manually entered security evidence
+
+This keeps the project realistic while demonstrating how the tool would function within a healthcare environment.
+
+---
+
+# Risks & Challenges
+
 ```mermaid
 graph TD
-    A[Project Risks & Challenges]
 
-    A --> B[Compliance & Regulatory Challenges]
-    B --> B1[Difficulty mapping technical checks accurately]
-    B1 --> B2[HIPAA]
-    B1 --> B3[NIST]
-    B1 --> B4[PHIPA]
+A[Project Risks & Challenges]
 
-    A --> C[Project Scope Risks]
-    C --> C1[Scope becoming too large]
+A --> B[Compliance & Regulatory Risks]
+B --> B1[Difficulty mapping technical checks]
+B1 --> B2[HIPAA]
+B1 --> B3[PHIPA]
+B1 --> B4[NIST]
 
-    A --> D[Technical Complexity Risks]
-    D --> D1[Background monitoring feature becoming too complex]
+A --> C[Scope Risks]
+C --> C1[Project scope becoming too large]
 
-    A --> E[Project Management Risks]
-    E --> E1[GitHub not being updated weekly]
-    E --> E2[Uneven group contribution]
+A --> D[Technical Complexity Risks]
+D --> D1[Background monitoring becoming too complex]
 
-    A --> F[Testing & Validation Risks]
-    F --> F1[Testing scenarios may not be realistic enough]
+A --> E[Project Management Risks]
+E --> E1[GitHub not updated weekly]
+E --> E2[Uneven group contribution]
+
+A --> F[Testing Risks]
+F --> F1[Testing scenarios may lack realism]
 ```
+
+---
+
 # Final Statement
-Overall, Phase 2 will move the Healthcare Data Security Compliance Checker from a basic
-compliance questionnaire toward a lightweight, privacy-preserving, evidence-based compliance
-support system. The tool will remain realistic for a four month implementation period by using
-simulated metadata, sample logs, structured control mappings, and rule-based detection instead of live PHI or EHR integration. By adding EHR safeguard mapping, CIA triad impact, cybersecurity training readiness, data integrity checks, incident response readiness, and plain-language reporting, the tool will better support smaller healthcare organizations that need practical and understandable cybersecurity compliance guidance.
+
+Phase 2 moves the **Healthcare Data Security Compliance Checker** beyond a basic questionnaire toward a:
+
+- Privacy-preserving system
+- Evidence-based compliance checker
+- Context-aware healthcare cybersecurity support tool
+
+The implementation remains realistic for a **4-month development period** by relying on:
+
+- Simulated metadata
+- Sample logs
+- Rule-based detection
+- Structured control mapping
+
+rather than:
+
+- Live PHI
+- Live EHR integration
+- Production monitoring
+
+Additional capabilities introduced include:
+
+- EHR safeguard mapping
+- CIA triad impact analysis
+- Cybersecurity training readiness
+- Data integrity checks
+- Incident response readiness
+- Plain-language reporting
+
+The goal is to support **smaller healthcare organizations** that require practical and understandable cybersecurity compliance guidance.
+
+---
 
 # Project Structure
 
@@ -148,8 +266,34 @@ Healthcare-Compliance-Checker/
 ├── control_bank.json
 ├── system_data.json
 ├── report.html
-└── README.md
+├── README.md
+│
+└── docs/
+    ├── diagrams/
+    ├── testing/
+    └── reports/
+```
 
 ---
 
+# Technologies
 
+- Python
+- Streamlit
+- JSON
+- HTML Reporting
+- GitHub Documentation
+- Rule-based Risk Scoring
+
+---
+
+# Future Enhancements
+
+Potential future expansions:
+
+- EHR integration
+- SIEM integration
+- API-based monitoring
+- Machine learning anomaly detection
+- Enhanced automation
+- Enterprise compliance dashboards
