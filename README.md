@@ -101,3 +101,7 @@ Healthcare-Compliance-Checker/
 ├── system_data.json
 ├── report.html
 └── README.md
+
+---
+# Group Roles & Responsibilities
+
