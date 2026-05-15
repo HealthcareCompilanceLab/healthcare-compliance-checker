@@ -91,20 +91,48 @@ Results are displayed through a professional HTML dashboard containing:
 
 ---
 ## Group Roles & Responsibilities
-|_____________________________________________________________________________________________|
-| Member| Role                           | Responsibilities                                   |
-|_______|________________________________|____________________________________________________|
-|Carleen|Research & Compliance Lead      |HIPAA/PHIPA/NIST mapping, documentation,            |
-|       |                                |testing scenarios, report writing, report writing,  |
-|       |                                |privacy/usability review                            |
-|_______|________________________________|____________________________________________________|
-|Kasi   |Technical & Prototype Lead      |Code implementation, Streamlit interface,           |
-|       |                                |monitoring logic, risk scoring                      |
-|_______|_______________________________|_____________________________________________________|
-|Hartej |Project Mgt.& Presentation Lead |Weekly coordination, GitHub evidence diagrams,      |
-|       |                                |integration support                                 |
-|_______|________________________________|____________________________________________________|
+Project Team
+├── Carleen — Research & Compliance Lead
+│   ├── HIPAA / PHIPA / NIST mapping
+│   ├── Documentation
+│   ├── Testing scenarios
+│   ├── Report writing
+│   └── Privacy & usability review
+│
+├── Kasi — Technical & Prototype Lead
+│   ├── Code implementation
+│   ├── Streamlit interface
+│   ├── Monitoring logic
+│   └── Risk scoring
+│
+└── Hartej — Project Management & Presentation Lead
+    ├── Weekly coordination
+    ├── GitHub evidence diagrams
+    └── Integration support
+# Risks & Challenges:
+```mermaid
+graph TD
+    A[Project Risks & Challenges]
 
+    A --> B[Compliance & Regulatory Challenges]
+    B --> B1[Difficulty mapping technical checks accurately]
+    B1 --> B2[HIPAA]
+    B1 --> B3[NIST]
+    B1 --> B4[PHIPA]
+
+    A --> C[Project Scope Risks]
+    C --> C1[Scope becoming too large]
+
+    A --> D[Technical Complexity Risks]
+    D --> D1[Background monitoring feature becoming too complex]
+
+    A --> E[Project Management Risks]
+    E --> E1[GitHub not being updated weekly]
+    E --> E2[Uneven group contribution]
+
+    A --> F[Testing & Validation Risks]
+    F --> F1[Testing scenarios may not be realistic enough]
+```
 
 # Project Structure
 
