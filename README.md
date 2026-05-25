@@ -266,6 +266,6 @@ A key design goal in Phase 2 is to map each technical control to an understandab
   <strong>⭐ If you find our work valuable, please consider giving it a star! ⭐</strong>
 </p>
 
-**Last updated:** 2026-05-10
+**Last updated:** 2026-05-24
 
 *Building safer, more compliant healthcare systems, one project at a time.*
