@@ -28,8 +28,8 @@
 ---
 
 ## About This Project
-
 <img align="right" alt="Coding" width="400" src="https://media.tenor.com/1S7bWTL8VWMAAAAi/abster-coded.gif">
+
 We are fourth-year Information Sciences students at **Sheridan College** with a strong interest in cybersecurity, compliance, and healthcare data protection. As part of our capstone project, we are developing the **Healthcare Data Security Compliance Checker** to connect academic learning with a practical healthcare security challenge.
 
 The project is designed as a proof-of-concept that helps evaluate whether important security safeguards are in place in healthcare environments. It does not process or store live patient health information. Instead, it focuses on security-related indicators, compliance validation, and evidence-based reporting.
