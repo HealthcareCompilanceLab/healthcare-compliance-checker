@@ -128,6 +128,7 @@ The main feedback provided to our group by Professor Syed Tanbeer was to:
 - Make the system accessible to medical staff.
 - Include awareness of common cyberattacks.
 - Create an overall system diagram.
+- Implement User Reporsitories for login redirections.
 
 ### How we will address it
 - Expand the control bank so each check includes a control ID, category, expected value, risk level, remediation, and regulatory mapping.
@@ -192,6 +193,7 @@ A key design goal in Phase 2 is to map each technical control to an understandab
 - Plain-language reporting improvements.
 - System architecture diagram.
 - Weekly GitHub documentation updates.
+- User Repository 
 
 ---
 
