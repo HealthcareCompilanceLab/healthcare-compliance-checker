@@ -79,6 +79,25 @@ The project is currently in the refinement stage. Phase 1 is complete, and Phase
 The goal for Phase 2 is to improve the existing prototype into a more complete and evidence-based compliance checker that is also practical for smaller and privately funded healthcare organizations that may not have access to expensive enterprise compliance platforms.
 
 ---
+##Application Architecture
+healthcare-compliance-checker/
+├── app.py
+├── requirements.txt
+├── data/
+│   ├── cloud_user_repository.json
+│   ├── role_permissions.json
+│   ├── password_policy.json
+│   ├── security_retention_policy.json
+│   └── sample_access_logs.csv
+└── modules/
+    ├── user_repository.py
+    ├── role_checker.py
+    ├── password_policy_checker.py
+    ├── account_retention_checker.py
+    ├── access_monitor.py
+    └── risk_scoring.py
+
+---
 ## user repository roles
 
 ## Phase 1 Completion
