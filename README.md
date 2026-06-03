@@ -199,6 +199,7 @@ A key design goal in Phase 2 is to map each technical control to an understandab
 - Charts or trend tracking for repeated audits.
 - Tighter integration between the main checker and the Streamlit sub-repo.
 - Weekly GitHub updates and version tracking.
+- Based on professor feedback, the team decided to expand the audit logging feature by adding a dashboard widget that displays recent audit activity when a user logs into the system. This widget will support role-based visibility: Admin users will be able to view all audit logs, Auditor users will see compliance-related audit logs, and Healthcare Staff users will only see their own recent activity. This feature improves accountability, supports compliance monitoring, and helps the system better reflect real healthcare security practices.
 
 
 ## Known Issues and Limitations
