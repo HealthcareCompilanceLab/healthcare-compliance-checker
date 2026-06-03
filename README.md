@@ -326,7 +326,25 @@ Stores:
 - account status
 - training status
 - access/security logs
+- audit log records
 - retention settings
+        ↓
+[Audit Logging Module]
+        ↓
+Records:
+- successful logins
+- failed login attempts
+- report views
+- role-based access events
+- access denied events
+- compliance check activity
+        ↓
+[Role-Based Audit Log Widget]
+        ↓
+Displays:
+- Admin: all audit logs
+- Auditor / Compliance Officer: compliance-related audit logs
+- Healthcare Staff: only their own recent activity
         ↓
 [Compliance Rules Engine]
         ↓
@@ -338,6 +356,9 @@ Detects:
 - inactive accounts
 - missing log retention
 - IT admin PHI access without support ticket
+- suspicious audit log activity
+- repeated failed login attempts
+- unauthorized access attempts
         ↓
 [Risk Scoring System]
         ↓
