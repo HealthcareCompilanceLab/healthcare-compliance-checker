@@ -309,6 +309,19 @@ The SaaS-based repository will allow the compliance checker to evaluate:
 10. Privileged access monitoring
 -Checks whether IT administrative accessed PHI without accessed PHI without an approved support ticket or documented reason
 
+##Planned Audit logging Feature
+The project will include an audit logging feature to track important user activity within the Healthcare Compliance Checker. This feature will record events such as successful logins, failed login attempts, report views, role-based access events, access denied events, and compliance check activity.
+
+Audit logging will serve two purposes in the system. First, it will act as stored evidence by keeping a record of user and security activity for compliance review, accountability, and incident investigation. Second, it will be used as a visible dashboard feature through an audit log widget in the Streamlit interface.
+
+The audit log widget will display recent audit activity when a user logs into the system. The information shown will depend on the user’s role:
+
+- **Admin:** Can view all audit log records.
+- **Compliance Officer / Auditor:** Can view compliance-related audit logs.
+- **Healthcare Staff:** Can view only their own recent activity.
+
+This role-based audit log visibility supports the principle of least privilege while improving monitoring, transparency, and healthcare compliance readiness.
+
 ## Proposed SaaS Repository Architecture 
 ```text
 [Healthcare Staff / IT Admin / Compliance Officer]
