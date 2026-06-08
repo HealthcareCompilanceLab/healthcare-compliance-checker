@@ -386,7 +386,6 @@ Detects:
 - EBSCOhost: Applied Science & Tech Source: https://research-ebsco-com.library.sheridanc.on.ca/c/uombjt/search/advanced/filters?autocorrect=y&db=awh
 - EBSCOhost: Health Source- Consumer Edition: https://research-ebsco-com.library.sheridanc.on.ca/c/uombjt/search/advanced/filters?auth-callid=f6c73317-b31e-418c-bd6a-23ea8ccef0a0&autocorrect=y&db=hch
 - CanLII: Canadian Legal Information Institute: https://www.canlii.org/?origLang=en
-
 ---
 
 <p align="center">
