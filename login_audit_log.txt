@@ -1,0 +1,10 @@
+[2026-06-11 03:28:47] EVENT=LOGIN | STATUS=SUCCESS | JOB_ID=EMP001 | NAME=Alice Johnson | ROLE=Admin | DEPARTMENT=Security | NOTE=User logged into Streamlit dashboard
+[2026-06-11 03:29:08] EVENT=LOGOUT | STATUS=SUCCESS | JOB_ID=EMP001 | NAME=Alice Johnson | ROLE=Admin | DEPARTMENT=Security | NOTE=User logged out of Streamlit dashboard
+[2026-06-11 03:29:18] EVENT=LOGIN | STATUS=FAILED | JOB_ID=EMP001 | NAME=Unknown | ROLE=Unknown | DEPARTMENT=Unknown | NOTE=Invalid credentials provided
+[2026-06-11 03:29:20] EVENT=LOGIN | STATUS=FAILED | JOB_ID=EMP001 | NAME=Unknown | ROLE=Unknown | DEPARTMENT=Unknown | NOTE=Invalid credentials provided
+[2026-06-11 03:29:22] EVENT=LOGIN | STATUS=FAILED | JOB_ID=EMP001 | NAME=Unknown | ROLE=Unknown | DEPARTMENT=Unknown | NOTE=Invalid credentials provided
+[2026-06-11 03:29:24] EVENT=LOGIN | STATUS=FAILED | JOB_ID=EMP001 | NAME=Unknown | ROLE=Unknown | DEPARTMENT=Unknown | NOTE=Invalid credentials provided
+[2026-06-11 03:29:25] EVENT=LOGIN | STATUS=FAILED | JOB_ID=EMP001 | NAME=Unknown | ROLE=Unknown | DEPARTMENT=Unknown | NOTE=Invalid credentials provided
+[2026-06-11 03:29:37] EVENT=LOGIN | STATUS=SUCCESS | JOB_ID=EMP001 | NAME=Alice Johnson | ROLE=Admin | DEPARTMENT=Security | NOTE=User logged into Streamlit dashboard
+[2026-06-11 03:30:03] EVENT=LOGOUT | STATUS=SUCCESS | JOB_ID=EMP001 | NAME=Alice Johnson | ROLE=Admin | DEPARTMENT=Security | NOTE=User logged out of Streamlit dashboard
+[2026-06-11 03:30:16] EVENT=LOGIN | STATUS=SUCCESS | JOB_ID=EMP003 | NAME=Clara James | ROLE=Healthcare Staff | DEPARTMENT=Clinical | NOTE=User logged into Streamlit dashboard
