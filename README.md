@@ -322,6 +322,31 @@ The audit log widget will display recent audit activity when a user logs into th
 
 This role-based audit log visibility supports the principle of least privilege while improving monitoring, transparency, and healthcare compliance readiness.
 
+## Backup & Contingency Readiness Module
+
+The Backup & Contingency Readiness module is a planned Phase 2 feature of the Healthcare Data Security Compliance Checker. This feature evaluates whether a healthcare organization has basic backup, recovery, and business continuity safeguards in place to support data availability, recovery readiness, and incident response.
+
+Since this project is a prototype and does not connect to live EHR systems or store real PHI, the module uses simulated backup policy evidence and sample configuration values instead of performing production-level enterprise backups. This keeps the feature aligned with the project scope while still demonstrating how backup and contingency controls can be assessed in a healthcare compliance environment.
+
+The module will evaluate controls such as:
+
+* Whether backups are enabled
+* Backup frequency
+* Date of the most recent backup
+* Backup encryption status
+* Offsite or cloud backup availability
+* Restore testing status
+* Disaster recovery plan availability
+* Downtime procedure readiness
+* Ransomware recovery steps
+* Critical system identification
+* Incident response planning
+
+The results will be displayed through a Streamlit dashboard showing backup readiness status, risk level, failed controls, supporting evidence, and remediation recommendations. Backup-related activity, such as viewing the backup dashboard or running a readiness check, may also be recorded in the audit logs to support accountability and compliance evidence.
+
+This feature supports the project’s focus on business continuity, data integrity, availability, and healthcare security compliance readiness.
+
+
 ## Proposed SaaS Repository Architecture 
 ```text
 [Healthcare Staff / IT Admin / Compliance Officer]
