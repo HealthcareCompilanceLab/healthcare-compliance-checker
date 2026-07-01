@@ -5,5 +5,28 @@
   "backup_encrypted": true,
   "password_length": 6,
   "login_attempts": ["failed", "failed", "failed", "success"],
-  "suspicious_ip_detected": true
+  "suspicious_ip_detected": true,
+
+  "scenario_name": "Recovery Failure with Partial Safeguards",
+  "scenario_description": "A simulated healthcare organization has encrypted backups and a disaster recovery plan, but has not tested restoration, documented downtime procedures, or prepared ransomware recovery steps.",
+  "encrypted_backups": true,
+  "backup_restoration_tested": false,
+  "disaster_recovery_plan": true,
+  "downtime_procedures": false,
+  "ransomware_recovery_steps": false,
+  "critical_systems_identified": true,
+  "recovery_evidence_documented": false,
+  "backup_retention_policy": true,
+  "last_backup_date": "2026-06-18",
+  "last_restore_test_date": "Not tested",
+  "recovery_time_objective_hours": 24,
+  "recovery_point_objective_hours": 12,
+  "sample_evidence": {
+    "backup_policy_file": "backup_policy_draft.pdf",
+    "restore_test_record": "Missing",
+    "downtime_procedure_file": "Missing",
+    "disaster_recovery_plan_file": "dr_plan_v1.pdf",
+    "ransomware_playbook": "Missing",
+    "critical_system_inventory": "critical_systems_list.xlsx"
+  }
 }
