@@ -54,6 +54,22 @@ def require_any_access(required_access_list):
         st.stop()
 
 
+def clear_awareness_state():
+    keys_to_clear = [
+        "awareness_user_id",
+        "awareness_session_started",
+        "awareness_widgets_shown",
+        "dismissed_awareness_widgets",
+        "common_security_mistakes",
+        "audit_log_issues",
+    ]
+
+    for key in keys_to_clear:
+        if key in st.session_state:
+            del st.session_state[key]
+
+
 def logout():
+    clear_awareness_state()
     st.session_state.logged_in = False
     st.session_state.user = None
