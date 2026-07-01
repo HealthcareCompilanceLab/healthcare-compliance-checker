@@ -1,62 +1,82 @@
 from pathlib import Path
+
+import pandas as pd
 import streamlit as st
-from auth import require_access
+
+from auth import initialize_session, logout, require_access
 from utils import (
-    load_json,
-    compute_compliance,
     apply_custom_style,
-    render_hero,
+    compute_compliance,
+    load_json,
+    read_audit_log,
     render_alerts,
+    render_findings_cards,
+    render_hero,
+    render_kpi_card,
+    render_progress_bar,
+    render_section_header,
     render_sidebar,
     render_system_overview,
-    render_kpi_card,
-    render_section_header,
-    render_progress_bar,
-    render_findings_cards,
 )
 
-st.set_page_config(page_title="Admin Dashboard", page_icon="🛡️", layout="wide")
+st.set_page_config(page_title="Admin Dashboard", page_icon="📊", layout="wide")
 apply_custom_style()
+initialize_session()
 require_access("admin")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-controls = load_json(BASE_DIR / "control_bank.json")
-system = load_json(BASE_DIR / "system_data.json")
-summary = compute_compliance(controls, system)
+CONTROL_FILE = BASE_DIR / "control_bank.json"
+SYSTEM_FILE = BASE_DIR / "system_data.json"
 
-render_sidebar(st.session_state.user, summary, system)
+controls = load_json(CONTROL_FILE)
+system = load_json(SYSTEM_FILE)
+summary = compute_compliance(controls, system)
+user = st.session_state.user
+
+render_sidebar(user, summary, system)
 
 render_hero(
-    "Admin Dashboard",
-    "Full compliance visibility, technical findings, alerts, and healthcare security posture in one place.",
-    "Admin Access"
+    "Admin Security Dashboard",
+    "Executive view of healthcare security posture, control performance, alerts, and recent audit activity.",
+    "Administrator Access",
 )
 
-a, b, c, d = st.columns(4)
-with a:
-    render_kpi_card("Compliance Score", f"{summary['percent']:.2f}%", "Overall control alignment", "info")
-with b:
-    render_kpi_card("Risk Level", summary["overall"], "Current environment exposure", "danger" if summary["overall"] == "HIGH RISK" else "warning" if summary["overall"] == "MEDIUM RISK" else "success")
-with c:
-    render_kpi_card("Passed Controls", str(summary["passed"]), "Controls currently compliant", "success")
-with d:
-    render_kpi_card("Failed Controls", str(summary["failed"]), "Controls requiring attention", "danger")
+c1, c2, c3, c4 = st.columns(4)
+with c1:
+    render_kpi_card("Compliance Score", f"{summary['percent']:.2f}%", "Overall compliance posture", "info")
+with c2:
+    render_kpi_card("Risk Level", summary["overall"], "Calculated from control results", "warning")
+with c3:
+    render_kpi_card("Passed Controls", str(summary["passed"]), "Controls meeting expectations", "success")
+with c4:
+    render_kpi_card("Failed Controls", str(summary["failed"]), "Controls needing remediation", "danger")
 
-render_section_header("Posture Overview", "Visual breakdown of compliance and operational security health.", "◈")
+render_section_header("Control Performance", "Breakdown of compliance status across evaluated controls.", "▣")
+total_controls = summary["passed"] + summary["failed"] + summary["insufficient"]
 
-st.markdown('<div class="hc-card">', unsafe_allow_html=True)
-render_progress_bar("Compliance Readiness", summary["percent"], "info")
-pass_rate = (summary["passed"] / len(summary["results"]) * 100) if summary["results"] else 0
-fail_rate = (summary["failed"] / len(summary["results"]) * 100) if summary["results"] else 0
-render_progress_bar("Passed Controls", pass_rate, "success")
-render_progress_bar("Failed Controls", fail_rate, "danger")
-st.markdown('</div>', unsafe_allow_html=True)
+if total_controls > 0:
+    render_progress_bar("Passed", (summary["passed"] / total_controls) * 100, "success")
+    render_progress_bar("Failed", (summary["failed"] / total_controls) * 100, "danger")
+    render_progress_bar("Insufficient Data", (summary["insufficient"] / total_controls) * 100, "warning")
 
-render_section_header("System Intelligence", "Current technical safeguards and attack-surface signals.", "⬢")
-render_system_overview(system)
-
-render_section_header("Security Alerts", "Automated detections and authentication anomalies requiring visibility.", "⚠")
+render_section_header("Security Alerts", "Detected issues based on current system posture.", "⚠")
 render_alerts(summary["alerts"])
 
-render_section_header("Control Findings", "Structured view of compliance gaps, evidence, and remediation actions.", "▣")
+render_section_header("System Overview", "Key live configuration and monitoring indicators.", "◆")
+render_system_overview(system)
+
+render_section_header("Recent Audit Activity", "Latest login and access activity from the audit log.", "📝")
+audit_lines = read_audit_log(limit=10)
+if audit_lines:
+    df = pd.DataFrame({"Recent Events": audit_lines})
+    st.dataframe(df, use_container_width=True, hide_index=True)
+else:
+    st.info("No audit log entries found yet.")
+
+render_section_header("Compliance Findings", "Detailed findings with evidence and recommended action.", "✓")
 render_findings_cards(summary["results"])
+
+st.markdown("---")
+if st.button("Logout"):
+    logout()
+    st.rerun()
