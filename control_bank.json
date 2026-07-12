@@ -149,4 +149,77 @@
     "plain_language_feedback": "The organization should have rules for how long backups are kept and how they are protected.",
     "technical_feedback": "Document backup retention schedules, retention exceptions, encryption requirements, access controls, and deletion procedures."
   }
+  ,
+  {
+    "id": "EN-02",
+    "category": "Encryption",
+    "description": "Data at rest must be encrypted",
+    "field": "data_encryption_at_rest",
+    "expected": true,
+    "risk": "High",
+    "remediation": "Enable encryption at rest for stored healthcare and operational data."
+  },
+  {
+    "id": "FW-01",
+    "category": "EHR Safeguards",
+    "description": "Firewall protection must be enabled",
+    "field": "firewall_enabled",
+    "expected": true,
+    "risk": "High",
+    "remediation": "Enable and maintain firewall protection for healthcare systems and supporting infrastructure."
+  },
+  {
+    "id": "FW-02",
+    "category": "EHR Safeguards",
+    "description": "Firewall rules and logs must be monitored",
+    "field": "firewall_monitored",
+    "expected": true,
+    "risk": "Medium",
+    "remediation": "Review firewall rules, alerts, and logs regularly and document the review process."
+  },
+  {
+    "id": "AV-01",
+    "category": "Endpoint Protection",
+    "description": "Antivirus protection must be enabled",
+    "field": "antivirus_enabled",
+    "expected": true,
+    "risk": "Medium",
+    "remediation": "Enable antivirus protection on healthcare workstations and supported systems."
+  },
+  {
+    "id": "EP-01",
+    "category": "Endpoint Protection",
+    "description": "Endpoint protection must be enabled",
+    "field": "endpoint_protection_enabled",
+    "expected": true,
+    "risk": "Medium",
+    "remediation": "Implement endpoint protection or managed device security controls."
+  },
+  {
+    "id": "WS-01",
+    "category": "EHR Safeguards",
+    "description": "Workstation security controls must be enabled",
+    "field": "workstation_security_controls",
+    "expected": true,
+    "risk": "Medium",
+    "remediation": "Apply workstation hardening and device security controls for systems handling PHI."
+  },
+  {
+    "id": "AC-02",
+    "category": "Access Control",
+    "description": "Role-based access control must be enabled",
+    "field": "role_based_access_control",
+    "expected": true,
+    "risk": "High",
+    "remediation": "Restrict access using role-based permissions aligned to job responsibilities."
+  },
+  {
+    "id": "RA-01",
+    "category": "Remote Access",
+    "description": "Remote access must be secured",
+    "field": "remote_access_secured",
+    "expected": true,
+    "risk": "Medium",
+    "remediation": "Protect remote access using approved secure access controls and strong authentication."
+  }
 ]

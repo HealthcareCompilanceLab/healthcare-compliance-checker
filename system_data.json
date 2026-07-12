@@ -21,6 +21,17 @@
   "last_restore_test_date": "Not tested",
   "recovery_time_objective_hours": 24,
   "recovery_point_objective_hours": 12,
+
+  "tls_https_enabled": true,
+  "data_encryption_at_rest": true,
+  "firewall_enabled": true,
+  "firewall_monitored": false,
+  "antivirus_enabled": true,
+  "endpoint_protection_enabled": true,
+  "workstation_security_controls": true,
+  "role_based_access_control": true,
+  "remote_access_secured": true,
+
   "sample_evidence": {
     "backup_policy_file": "backup_policy_draft.pdf",
     "restore_test_record": "Missing",
