@@ -201,6 +201,44 @@ A key design goal in Phase 2 is to map each technical control to an understandab
 - Weekly GitHub updates and version tracking.
 - Based on professor feedback, the team decided to expand the audit logging feature by adding a dashboard widget that displays recent audit activity when a user logs into the system. This widget will support role-based visibility: Admin users will be able to view all audit logs, Auditor users will see compliance-related audit logs, and Healthcare Staff users will only see their own recent activity. This feature improves accountability, supports compliance monitoring, and helps the system better reflect real healthcare security practices.
 
+## Interactive Compliance Visualizations and Advisory Sources
+Based on instructor feedback, the team is improving how compliance results are displayed and explored within the Streamlit dashboard. The goal is to move beyond static text output by presenting compliance data through clearer and more visually interactive components.
+
+Planned improvements include:
+
+- Interactive graphs showing compliance scores by safeguard category.
+- PASS/FAIL summaries for individual security controls.
+- Risk-level indicators using clear colour-coded status labels.
+- Filters for viewing findings by category, severity, user role, or compliance framework.
+- Expandable sections that allow users to view evidence, identified weaknesses, and remediation guidance.
+- Comparison views showing how passing and failing test scenarios affect the overall risk score.
+- Tables that summarize control status, supporting evidence, regulatory mapping, and recommended actions.
+
+### Compliance Advisory Source Integration
+
+Each user-facing compliance advisory will include a visible source citation or reference link. This will allow users to understand where the recommendation originated and verify that it is supported by recognized healthcare privacy and cybersecurity guidance.
+
+The advisories will primarily reference:
+
+- [HHS HIPAA Security Rule Guidance](https://www.hhs.gov/hipaa/for-professionals/security/guidance/index.html)
+- [NIST SP 800-66 Revision 2 – Implementing the HIPAA Security Rule](https://csrc.nist.gov/pubs/sp/800/66/r2/final)
+- [NIST Cybersecurity Framework 2.0](https://www.nist.gov/cyberframework)
+- [Information and Privacy Commissioner of Ontario – Health Privacy](https://www.ipc.on.ca/en/health-privacy-ontario)
+- [IPC Ontario – Privacy Management Handbook for Small Healthcare Organizations](https://www.ipc.on.ca/en/media/5415/download)
+
+Each advisory is intended to display:
+
+1. The failed or missing safeguard.
+2. The associated risk level.
+3. The evidence used to determine the result.
+4. A plain-language explanation of the issue.
+5. Recommended remediation steps.
+6. The applicable framework or regulatory category.
+7. A clickable link to the supporting source.
+
+For example, an advisory for missing MFA may explain the access-control risk, recommend enabling MFA for privileged accounts, identify the related HIPAA or NIST control area, and provide a link to the supporting guidance.
+
+These visual and citation improvements are currently in progress. The team expects to have the refined outputs ready to demonstrate during the in-person meeting on Wednesday, July 22, 2026.
 
 ## Known Issues and Limitations
 
