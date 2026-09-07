@@ -35,8 +35,7 @@ We are fourth-year Information Sciences students at **Sheridan College** with a 
 The project is designed as a proof-of-concept that helps evaluate whether important security safeguards are in place in healthcare environments. It does not process or store live patient health information. Instead, it focuses on security-related indicators, compliance validation, and evidence-based reporting.
 
 ### Team Members
-- **Hartej Singh Dhanjal** — Project Manager
-- **Carleen Gyamfi** — Research & Compliance Lead
+- **Allen Jones** - Researcher
 - **Kasinadhan Udayakumar** — Technical Lead
 
 ---
@@ -271,16 +270,6 @@ These visual and citation improvements are currently in progress. The team expec
 
 ---
 
-## Group Roles and Responsibilities
-
-| Member | Role | Responsibilities |
-|---|---|---|
-| Carleen | Research & Compliance Lead | HIPAA / PHIPA / NIST mapping, documentation, testing scenarios, report writing |
-| Kasi | Technical & Prototype Lead | Code implementation, Streamlit interface, monitoring logic, report generation |
-| Hartej | Project Management & Presentation Lead | Weekly coordination, GitHub evidence, slides, diagrams, integration support |
-
----
-
 ## Risks and Challenges
 
 - Difficulty mapping technical checks accurately to HIPAA, NIST, and PHIPA.
@@ -460,6 +449,6 @@ Detects:
   <strong>⭐ If you find our work valuable, please consider giving it a star! ⭐</strong>
 </p>
 
-**Last updated:** 2026-05-10
+**Last updated:** 2026-00-07
 
 *Building safer, more compliant healthcare systems, one project at a time.*
