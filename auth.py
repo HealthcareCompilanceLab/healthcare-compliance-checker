@@ -62,6 +62,7 @@ def clear_awareness_state():
         "dismissed_awareness_widgets",
         "common_security_mistakes",
         "audit_log_issues",
+        "show_awareness_popup",
     ]
 
     for key in keys_to_clear:

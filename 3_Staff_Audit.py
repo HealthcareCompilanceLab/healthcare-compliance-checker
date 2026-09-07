@@ -2,10 +2,12 @@ import streamlit as st
 from auth import require_access
 from utils import (
     apply_custom_style,
+    render_divider,
     render_hero,
     render_sidebar,
     render_kpi_card,
     render_section_header,
+    render_section_radar,
     render_progress_bar,
 )
 
@@ -58,11 +60,11 @@ question_total = sum(len(qs) for qs in sections.values())
 
 x, y, z = st.columns(3)
 with x:
-    render_kpi_card("Assessment Scope", str(question_total), "Healthcare-specific control questions", "info")
+    render_kpi_card("Assessment Scope", str(question_total), "Healthcare-specific control questions", "info", "📋")
 with y:
-    render_kpi_card("Review Areas", str(len(sections)), "Authentication, privacy, devices, incidents", "success")
+    render_kpi_card("Review Areas", str(len(sections)), "Authentication, privacy, devices, incidents", "success", "🗂️")
 with z:
-    render_kpi_card("Audience", "Clinical Staff", "Built for healthcare workers handling PHI", "warning")
+    render_kpi_card("Audience", "Clinical Staff", "Built for healthcare workers handling PHI", "warning", "🩺")
 
 render_section_header("Audit Guidance", "Answer based on normal day-to-day practice, not ideal behavior.", "✦")
 
@@ -117,14 +119,18 @@ if submitted:
         risk = "HIGH RISK"
         tone = "danger"
 
+    render_divider()
     render_section_header("Assessment Results", "Visual summary of workforce cyber hygiene and privacy-safe behavior.", "✓")
 
     a, b = st.columns(2)
     with a:
-        render_kpi_card("Security Awareness Score", f"{percent:.2f}%", "Based on behavior across all healthcare work patterns.", tone)
+        render_kpi_card("Security Awareness Score", f"{percent:.2f}%", "Based on behavior across all healthcare work patterns.", tone, "🎯")
     with b:
-        render_kpi_card("Risk Level", risk, "Reflects current workforce handling of security and PHI.", tone)
+        render_kpi_card("Risk Level", risk, "Reflects current workforce handling of security and PHI.", tone, "🛰️")
 
+    render_section_radar(section_scores, "Behavior Score by Category", "🕸️")
+
+    render_section_header("Category Breakdown", "Detailed pass-rate view for each audit domain.", "📊")
     st.markdown('<div class="hc-card">', unsafe_allow_html=True)
     for section_name, values in section_scores.items():
         section_pct = (values["score"] / values["max"]) * 100 if values["max"] else 0
@@ -132,6 +138,7 @@ if submitted:
         render_progress_bar(section_name, section_pct, bar_tone)
     st.markdown('</div>', unsafe_allow_html=True)
 
+    render_divider()
     render_section_header("Recommendations", "Items that need coaching, policy reinforcement, or workflow correction.", "⚑")
 
     if recommendations:

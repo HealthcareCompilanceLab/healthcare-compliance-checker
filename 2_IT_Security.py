@@ -1,23 +1,22 @@
 from pathlib import Path
-
+import pandas as pd
 import streamlit as st
-
 from auth import initialize_session, logout, require_any_access
 from utils import (
     apply_custom_style,
     compute_compliance,
-    evaluate_contingency_controls,
     load_json,
     render_alerts,
-    render_contingency_section,
+    render_category_bar,
+    render_divider,
     render_findings_cards,
     render_hero,
     render_kpi_card,
-    render_progress_bar,
+    render_score_gauge,
     render_section_header,
+    render_severity_chart,
     render_sidebar,
     render_system_overview,
-    summarize_contingency_findings,
 )
 
 st.set_page_config(page_title="IT Security", page_icon="💻", layout="wide")
@@ -26,109 +25,63 @@ initialize_session()
 require_any_access(["admin", "it"])
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-CONTROL_FILE = BASE_DIR / "control_bank.json"
-SYSTEM_FILE = BASE_DIR / "system_data.json"
-
-controls = load_json(CONTROL_FILE)
-system = load_json(SYSTEM_FILE)
+controls = load_json(BASE_DIR / "control_bank.json")
+system = load_json(BASE_DIR / "system_data.json")
 summary = compute_compliance(controls, system)
-contingency_findings = evaluate_contingency_controls(controls, system)
-contingency_summary = summarize_contingency_findings(contingency_findings)
 user = st.session_state.user
 
-render_sidebar(user, summary, system)
+# IT Security cares about the technical control categories specifically
+IT_CATEGORIES = ["Encryption", "Network Security", "Endpoint Security", "Access Control", "Remote Access", "Audit Controls"]
+it_results = [r for r in summary["results"] if r["category"] in IT_CATEGORIES]
 
+render_sidebar(user, summary, system)
 render_hero(
     "IT Security Operations",
-    "Technical review of authentication, monitoring, infrastructure hardening, encryption, operational risk, and recovery readiness.",
+    "Technical review of authentication, monitoring, infrastructure hardening, encryption, and operational risk.",
     "IT Security View",
 )
 
-failed_logins = system.get("login_attempts", []).count("failed")
-mfa_status = "Enabled" if system.get("mfa_enabled") else "Disabled"
-tls_status = "Enabled" if system.get("tls_enabled") else "Disabled"
-logging_status = "Enabled" if system.get("logging_enabled") else "Disabled"
-
+# NOTE: these KPIs now read the *actual* fields present in system_data.json.
+# (Previously this page referenced fields such as tls_enabled / logging_enabled /
+# login_attempts / firewall_enabled / endpoint_protection_enabled that don't exist
+# in the data model, so every card silently showed "Disabled" or "0".)
 c1, c2, c3, c4 = st.columns(4)
 with c1:
-    render_kpi_card(
-        "MFA",
-        mfa_status,
-        "Privileged and user account protection",
-        "success" if mfa_status == "Enabled" else "danger",
-    )
+    render_kpi_card("MFA", "Enabled" if system.get("mfa_enabled") else "Disabled",
+                     "Privileged and user account protection", "success" if system.get("mfa_enabled") else "danger", "🔐")
 with c2:
-    render_kpi_card(
-        "TLS / HTTPS",
-        tls_status,
-        "Encrypted communications status",
-        "success" if tls_status == "Enabled" else "danger",
-    )
+    render_kpi_card("Secure Remote Access", "Enabled" if system.get("secure_remote_access") else "Disabled",
+                     "Encrypted / hardened remote connections", "success" if system.get("secure_remote_access") else "danger", "🌐")
 with c3:
-    render_kpi_card(
-        "Audit Logging",
-        logging_status,
-        "Visibility into activity and events",
-        "success" if logging_status == "Enabled" else "danger",
-    )
+    render_kpi_card("Audit Logging", "Enabled" if system.get("audit_logging") else "Disabled",
+                     "Visibility into activity and events", "success" if system.get("audit_logging") else "danger", "🗂️")
 with c4:
-    render_kpi_card(
-        "Failed Logins",
-        str(failed_logins),
-        "Authentication anomalies detected",
-        "danger" if failed_logins >= 3 else "info",
-    )
+    render_kpi_card("Failed Logins", str(system.get("failed_login_count", 0)),
+                     "Authentication anomalies detected", "danger" if system.get("failed_login_count", 0) >= 3 else "info", "⚠️")
 
-render_section_header("Technical Posture", "Current system configuration and live control indicators.", "◆")
-render_system_overview(system)
+render_divider()
+left, right = st.columns([1.1, 1])
+with left:
+    render_section_header("Technical Posture", "Current system configuration and live control indicators.", "◆")
+    render_system_overview(system)
+with right:
+    render_section_header("IT Compliance Score", "Weighted compliance score across all evaluated controls.", "▣")
+    render_score_gauge(summary, title="")
 
-render_section_header("Operational Risk", "Visual summary of IT-facing compliance results.", "▣")
-render_progress_bar("Compliance Score", summary["percent"], "info")
-render_progress_bar(
-    "Failed Controls Ratio",
-    (summary["failed"] / len(summary["results"])) * 100 if summary["results"] else 0,
-    "danger",
-)
-render_progress_bar(
-    "Passed Controls Ratio",
-    (summary["passed"] / len(summary["results"])) * 100 if summary["results"] else 0,
-    "success",
-)
+render_section_header("Technical Control Performance", "Pass rate for each IT-facing control category.", "📊")
+render_category_bar(summary["results"], categories=IT_CATEGORIES, icon="🖥️")
 
-render_section_header("Security Alerts", "Events and patterns needing technical review.", "⚠")
+render_section_header("Risk Exposure by Severity", "IT-relevant failed controls grouped by severity.", "📛")
+render_severity_chart(it_results if it_results else summary["results"])
+
+render_divider()
+render_section_header("Security Alerts", "Conditions flagged by current system telemetry.", "🚨")
 render_alerts(summary["alerts"])
 
-render_contingency_section(contingency_findings, contingency_summary)
+render_section_header("IT Findings", "Technical findings with evidence, explanation, remediation, and references.", "🛡")
+render_findings_cards(it_results if it_results else summary["results"], limit=6)
 
-it_keywords = [
-    "mfa",
-    "tls",
-    "audit",
-    "logging",
-    "backup",
-    "password",
-    "endpoint",
-    "access",
-    "recovery",
-    "ransomware",
-    "downtime",
-]
-it_results = [
-    item for item in summary["results"]
-    if any(
-        keyword in item.get("desc", "").lower() or keyword in item.get("evidence", "").lower()
-        for keyword in it_keywords
-    )
-]
-
-render_section_header(
-    "IT Findings",
-    "Technical findings most relevant to infrastructure, monitoring, encryption, backup, and recovery operations.",
-    "🛡",
-)
-render_findings_cards(it_results if it_results else summary["results"])
-
-st.markdown("---")
+render_divider()
 if st.button("Logout"):
     logout()
     st.rerun()
